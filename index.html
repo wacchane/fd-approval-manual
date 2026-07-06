@@ -289,17 +289,13 @@
                   <span class="sched-fixed-val">5日間</span>
                 </div>
               </div>
-              <div class="sched-step">
+              <div class="sched-step sched-step-result">
                 <div class="sched-label"><span class="sched-num">7.</span>発売</div>
-                <div class="sched-dur">
-                  <select class="sched-val-sel"></select>
-                  <select class="sched-unit"><option>日</option><option>週間</option><option>ヵ月</option></select>
+                <div class="sched-dur sched-dur-result">
+                  <span class="sched-result" id="sched-result"></span>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="sched-result-row">
-            <span class="sched-result" id="sched-result"></span>
           </div>
         </div>
 
@@ -735,17 +731,21 @@
 
     function calcSchedule() {
       let total = FIXED_DAYS;
-      document.querySelectorAll('.sched-step:not(.sched-step-fixed)').forEach(step => {
-        const val = parseInt(step.querySelector('.sched-val-sel').value) || 0;
+      let allFilled = true;
+      document.querySelectorAll('.sched-step:not(.sched-step-fixed):not(.sched-step-result)').forEach(step => {
+        const valSel = step.querySelector('.sched-val-sel');
+        if (!valSel.value) { allFilled = false; return; }
         const unit = step.querySelector('.sched-unit').value;
-        total += val * (unitDays[unit] || 1);
+        total += parseInt(valSel.value) * (unitDays[unit] || 1);
       });
       const result = document.getElementById('sched-result');
-      const months = total / 30;
-      const display = Number.isInteger(Math.round(months * 10) / 10)
-        ? Math.round(months).toString()
-        : (Math.round(months * 10) / 10).toFixed(1);
-      result.textContent = `約${display}ヵ月後〜`;
+      if (allFilled) {
+        const months = Math.round(total / 30 * 10) / 10;
+        const display = Number.isInteger(months) ? months.toString() : months.toFixed(1);
+        result.textContent = `約${display}ヵ月後〜`;
+      } else {
+        result.textContent = '';
+      }
     }
 
     document.querySelectorAll('.sched-val-sel, .sched-unit').forEach(el => {

@@ -829,16 +829,20 @@ p strong { color: var(--s-navy); }
 
 .sched-step-fixed .sched-dur { background: var(--bg-3); }
 
-.sched-result-row {
+.sched-dur-result {
+  background: var(--s-offwhite);
+  min-height: 38px;
   display: flex;
-  justify-content: flex-end;
-  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
 }
 
 .sched-result {
-  font-size: 16px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--s-red);
+  white-space: nowrap;
+  text-align: center;
 }
 
 .sched-fixed-val {
