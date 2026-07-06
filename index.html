@@ -41,118 +41,113 @@
 
         <h3>商品化タイムスケジュール</h3>
 
-        <div class="timeline-wrap">
-          <table class="timeline-table">
-            <thead>
-              <tr>
-                <th>スタート</th>
-                <th>1か月</th>
-                <th>2か月</th>
-                <th>3か月</th>
-                <th>4か月</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>①デザイン企画</td>
-                <td>②デザイン監修</td>
-                <td>③サンプル作成</td>
-                <td>④サンプル監修</td>
-                <td>⑤量産 → ⑥提出 → ⑦発売</td>
-              </tr>
-              <tr class="period-row">
-                <td><span class="period">約1か月</span></td>
-                <td><span class="period">1〜2週間</span></td>
-                <td><span class="period">約3週間</span></td>
-                <td><span class="period">1〜2週間</span></td>
-                <td><span class="period">約1か月 / 1週間</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="step-list">
-          <div class="step">
-            <div class="step-header">
-              <span class="step-num">①</span>
-              <span class="step-title">デザイン企画：約1か月</span>
-            </div>
-            <p>ご希望のキャラクターが決定後、使用可能なアートワーク集をご案内させていただきます。ご希望のアートなどご選定ください。</p>
-            <p>ご希望のアートをお渡しして御社・ブランド様でデザイン組んでいただくことも可能ですし、弊社でデザインをご提案することも可能です。</p>
-            <div class="note">アートを受け渡しさせていただくにあたり、<strong>機密保持誓約書のご署名・捺印が必要</strong>になります。</div>
+        <div class="flow-tabs">
+          <div class="flow-tab-buttons">
+            <button class="flow-tab-btn active" data-tab="flow-1"><span class="flow-tab-num">①</span>デザイン企画</button>
+            <button class="flow-tab-btn" data-tab="flow-2"><span class="flow-tab-num">②</span>デザイン監修</button>
+            <button class="flow-tab-btn" data-tab="flow-3"><span class="flow-tab-num">③</span>サンプル作成</button>
+            <button class="flow-tab-btn" data-tab="flow-4"><span class="flow-tab-num">④</span>サンプル監修</button>
+            <button class="flow-tab-btn" data-tab="flow-5"><span class="flow-tab-num">⑤</span>量産</button>
+            <button class="flow-tab-btn" data-tab="flow-6"><span class="flow-tab-num">⑥</span>最終提出</button>
+            <button class="flow-tab-btn" data-tab="flow-7"><span class="flow-tab-num">⑦</span>発売</button>
           </div>
 
-          <div class="step">
-            <div class="step-header">
-              <span class="step-num">②</span>
-              <span class="step-title">デザイン監修：監修期間1〜2週間</span>
-            </div>
-            <p>アイテム毎に版権元へデザイン申請を行います。アイテムの詳細がわかる絵型・データをご用意いただき、専用申請書にてご提出をお願いいたします。</p>
-            <div class="note">申請書に不備がある場合、デザイン監修でNGが出た場合、デザイン修正いただき再監修が必要になります。</div>
-          </div>
+          <div class="flow-tab-panels">
 
-          <div class="step">
-            <div class="step-header">
-              <span class="step-num">③</span>
-              <span class="step-title">試作サンプル作成：約3週間</span>
+            <div class="flow-tab-panel active" id="flow-1">
+              <div class="flow-panel-inner">
+                <div class="flow-panel-header">
+                  <span class="flow-panel-num">①</span>
+                  <span class="flow-panel-title">デザイン企画<span class="flow-panel-duration">約1か月</span></span>
+                </div>
+                <p>ご希望のキャラクターが決定後、使用可能なアートワーク集をご案内させていただきます。ご希望のアートなどご選定ください。</p>
+                <p>ご希望のアートをお渡しして御社・ブランド様でデザイン組んでいただくことも可能ですし、弊社でデザインをご提案することも可能です。</p>
+                <div class="note">アートを受け渡しさせていただくにあたり、<strong>機密保持誓約書のご署名・捺印が必要</strong>になります。</div>
+              </div>
             </div>
-            <p>試作サンプルを作成いただきます。プリントや刺繍の場合、試刷り・試打ちでの監修も可能です。各色展開がある場合は、各色の試刷り・試打ちをご用意ください。</p>
-            <div class="note">ユニバーサル社の場合、試作サンプルも現物での提出が必要になります。</div>
-          </div>
 
-          <div class="step">
-            <div class="step-header">
-              <span class="step-num">④</span>
-              <span class="step-title">試作サンプル監修：監修期間1〜2週間</span>
+            <div class="flow-tab-panel" id="flow-2">
+              <div class="flow-panel-inner">
+                <div class="flow-panel-header">
+                  <span class="flow-panel-num">②</span>
+                  <span class="flow-panel-title">デザイン監修<span class="flow-panel-duration">1〜2週間</span></span>
+                </div>
+                <p>アイテム毎に版権元へデザイン申請を行います。アイテムの詳細がわかる絵型・データをご用意いただき、専用申請書にてご提出をお願いいたします。</p>
+                <div class="note">申請書に不備がある場合、デザイン監修でNGが出た場合、デザイン修正いただき再監修が必要になります。</div>
+              </div>
             </div>
-            <p>版権元により、現物監修・画像監修など提出方法異なりますのでご注意ください。</p>
-            <p>画像監修の場合、アイテム全体の画像、キャラクター部分の寄り画像を真上から撮影したものをご提出ください。斜めになっていたり、キャラクター部分が不鮮明な画像は再提出となります。現物監修の場合は、弊社までご送付ください。</p>
-            <div class="note">試作サンプル監修でNGが出た場合、再度試作サンプル作成いただき再監修が必要になります。</div>
-          </div>
 
-          <div class="step">
-            <div class="step-header">
-              <span class="step-num">⑤</span>
-              <span class="step-title">量産：約1か月</span>
+            <div class="flow-tab-panel" id="flow-3">
+              <div class="flow-panel-inner">
+                <div class="flow-panel-header">
+                  <span class="flow-panel-num">③</span>
+                  <span class="flow-panel-title">試作サンプル作成<span class="flow-panel-duration">約3週間</span></span>
+                </div>
+                <p>試作サンプルを作成いただきます。プリントや刺繍の場合、試刷り・試打ちでの監修も可能です。各色展開がある場合は、各色の試刷り・試打ちをご用意ください。</p>
+                <div class="note">ユニバーサル社の場合、試作サンプルも現物での提出が必要になります。</div>
+              </div>
             </div>
-            <p>試作サンプル監修で承認となりましたら、量産へご進行いただけます。</p>
-            <p>各版権により、専用の下げ札やネームを本体に付けていただく必要がありますのでご注意ください。各専用資材は、弊社指定の資材屋から購入いただく場合と、御社で作成いただく場合とそれぞれございます。</p>
-          </div>
 
-          <div class="step">
-            <div class="step-header">
-              <span class="step-num">⑥</span>
-              <span class="step-title">最終サンプルの提出：約1週間</span>
+            <div class="flow-tab-panel" id="flow-4">
+              <div class="flow-panel-inner">
+                <div class="flow-panel-header">
+                  <span class="flow-panel-num">④</span>
+                  <span class="flow-panel-title">試作サンプル監修<span class="flow-panel-duration">1〜2週間</span></span>
+                </div>
+                <p>版権元により、現物監修・画像監修など提出方法異なりますのでご注意ください。</p>
+                <p>画像監修の場合、アイテム全体の画像、キャラクター部分の寄り画像を真上から撮影したものをご提出ください。斜めになっていたり、キャラクター部分が不鮮明な画像は再提出となります。現物監修の場合は、弊社までご送付ください。</p>
+                <div class="note">試作サンプル監修でNGが出た場合、再度試作サンプル作成いただき再監修が必要になります。</div>
+              </div>
             </div>
-            <p>発売いただく前に、版権元へ最終サンプルの提出が必須となります。最終サンプルは資材等が商品と同仕様である必要がありますため、量産から抜きでご用意をお願いいたします。</p>
-            <div class="note">最終サンプルは返却されませんのでご注意ください。</div>
 
-            <h4>最終サンプル提出数</h4>
-            <table class="data-table">
-              <thead>
-                <tr><th>プロパティ</th><th>提出数</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>ディズニー</td><td>各色1点（1色展開の場合は各2点）</td></tr>
-                <tr><td>マーベル</td><td>各型色込み3枚</td></tr>
-                <tr><td>スター・ウォーズ</td><td>各色1点（1色展開の場合は各2点）</td></tr>
-                <tr><td>アンブリン</td><td>各型色込み9枚</td></tr>
-                <tr><td>ミニオンズ</td><td>各型色込み6枚</td></tr>
-                <tr><td>ドリームワークス</td><td>各型色込み6枚</td></tr>
-                <tr><td>ワーナーブラザーズ</td><td>各色1点（1色展開の場合は各2点）</td></tr>
-                <tr><td>ムーミン</td><td>各型色込み5枚</td></tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="step">
-            <div class="step-header">
-              <span class="step-num">⑦</span>
-              <span class="step-title">発売</span>
+            <div class="flow-tab-panel" id="flow-5">
+              <div class="flow-panel-inner">
+                <div class="flow-panel-header">
+                  <span class="flow-panel-num">⑤</span>
+                  <span class="flow-panel-title">量産<span class="flow-panel-duration">約1か月</span></span>
+                </div>
+                <p>試作サンプル監修で承認となりましたら、量産へご進行いただけます。</p>
+                <p>各版権により、専用の下げ札やネームを本体に付けていただく必要がありますのでご注意ください。各専用資材は、弊社指定の資材屋から購入いただく場合と、御社で作成いただく場合とそれぞれございます。</p>
+              </div>
             </div>
-            <p>最終サンプルが承認されましたら、発売可能となります。</p>
-          </div>
-        </div>
+
+            <div class="flow-tab-panel" id="flow-6">
+              <div class="flow-panel-inner">
+                <div class="flow-panel-header">
+                  <span class="flow-panel-num">⑥</span>
+                  <span class="flow-panel-title">最終サンプルの提出<span class="flow-panel-duration">約1週間</span></span>
+                </div>
+                <p>発売いただく前に、版権元へ最終サンプルの提出が必須となります。最終サンプルは資材等が商品と同仕様である必要がありますため、量産から抜きでご用意をお願いいたします。</p>
+                <div class="note">最終サンプルは返却されませんのでご注意ください。</div>
+                <h4>最終サンプル提出数</h4>
+                <table class="data-table">
+                  <thead><tr><th>プロパティ</th><th>提出数</th></tr></thead>
+                  <tbody>
+                    <tr><td>ディズニー</td><td>各色1点（1色展開の場合は各2点）</td></tr>
+                    <tr><td>マーベル</td><td>各型色込み3枚</td></tr>
+                    <tr><td>スター・ウォーズ</td><td>各色1点（1色展開の場合は各2点）</td></tr>
+                    <tr><td>アンブリン</td><td>各型色込み9枚</td></tr>
+                    <tr><td>ミニオンズ</td><td>各型色込み6枚</td></tr>
+                    <tr><td>ドリームワークス</td><td>各型色込み6枚</td></tr>
+                    <tr><td>ワーナーブラザーズ</td><td>各色1点（1色展開の場合は各2点）</td></tr>
+                    <tr><td>ムーミン</td><td>各型色込み5枚</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="flow-tab-panel" id="flow-7">
+              <div class="flow-panel-inner">
+                <div class="flow-panel-header">
+                  <span class="flow-panel-num">⑦</span>
+                  <span class="flow-panel-title">発売</span>
+                </div>
+                <p>最終サンプルが承認されましたら、発売可能となります。</p>
+              </div>
+            </div>
+
+          </div><!-- /.flow-tab-panels -->
+        </div><!-- /.flow-tabs -->
         <div class="section-notes" id="notes-flow"></div>
       </section>
 
@@ -524,6 +519,16 @@
         if (target) {
           target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+      });
+    });
+
+    // フロータブ切り替え
+    document.querySelectorAll('.flow-tab-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.flow-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.flow-tab-panel').forEach(p => p.classList.remove('active'));
+        this.classList.add('active');
+        document.getElementById(this.dataset.tab).classList.add('active');
       });
     });
 
