@@ -692,22 +692,11 @@
     }
 
     document.querySelectorAll('.tl-step[data-tab]').forEach(step => {
-      // ホバーでパネル表示
-      step.addEventListener('mouseenter', function() {
-        showPanel(this.dataset.tab);
-      });
-      // クリックで固定
-      step.addEventListener('click', function(e) {
-        e.stopPropagation();
+      step.addEventListener('click', function() {
         stickyTab = this.dataset.tab;
         setActiveStep(stickyTab);
         showPanel(stickyTab);
       });
-    });
-
-    // タイムラインからマウスが離れたら固定なければリセット
-    document.querySelector('.timeline-steps').addEventListener('mouseleave', function() {
-      showPanel(stickyTab);
     });
 
     // 初期表示：1.商品企画
