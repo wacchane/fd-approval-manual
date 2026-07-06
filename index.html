@@ -52,7 +52,7 @@
               <span class="tl-label">4か月</span>
             </div>
             <div class="timeline-steps">
-              <div class="tl-step active" data-tab="flow-1">1.商品企画</div>
+              <div class="tl-step" data-tab="flow-1">1.商品企画</div>
               <div class="tl-step tl-step-accent" data-tab="flow-2">2.デザイン監修</div>
               <div class="tl-step" data-tab="flow-3">3.試作サンプル作成</div>
               <div class="tl-step tl-step-accent" data-tab="flow-4">4.試作サンプル監修</div>
@@ -66,7 +66,7 @@
         <div class="flow-tabs">
           <div class="flow-tab-panels">
 
-            <div class="flow-tab-panel active" id="flow-1">
+            <div class="flow-tab-panel" id="flow-1">
               <div class="flow-panel-inner">
                 <div class="flow-panel-header">
                   <span class="flow-panel-num">1.</span>
@@ -534,25 +534,44 @@
       });
     });
 
-    // タイムライン連携タブ切り替え
-    function switchFlowTab(tabId) {
+    // タイムライン表示制御
+    let stickyTab = null;
+
+    function showPanel(tabId) {
       document.querySelectorAll('.flow-tab-panel').forEach(p => p.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
+      if (tabId) document.getElementById(tabId).classList.add('active');
+    }
+
+    function setActiveStep(tabId) {
       document.querySelectorAll('.tl-step[data-tab]').forEach(s =>
         s.classList.toggle('active', s.dataset.tab === tabId));
     }
+
     document.querySelectorAll('.tl-step[data-tab]').forEach(step => {
+      // ホバーでパネル表示
+      step.addEventListener('mouseenter', function() {
+        showPanel(this.dataset.tab);
+      });
+      // クリックで固定
       step.addEventListener('click', function(e) {
         e.stopPropagation();
-        switchFlowTab(this.dataset.tab);
-        document.querySelector('.flow-tab-panels').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        stickyTab = this.dataset.tab;
+        setActiveStep(stickyTab);
+        showPanel(stickyTab);
       });
     });
 
-    // タイムライン外クリックで初期状態（flow-1）に戻す
+    // タイムラインからマウスが離れたら固定なければリセット
+    document.querySelector('.timeline-steps').addEventListener('mouseleave', function() {
+      showPanel(stickyTab);
+    });
+
+    // タイムライン・パネル以外クリックで初期化
     document.addEventListener('click', function(e) {
       if (!e.target.closest('.timeline-scroll') && !e.target.closest('.flow-tab-panels')) {
-        switchFlowTab('flow-1');
+        stickyTab = null;
+        setActiveStep(null);
+        showPanel(null);
       }
     });
 
