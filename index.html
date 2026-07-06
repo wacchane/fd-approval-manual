@@ -254,7 +254,7 @@
                 <div class="sched-label"><span class="sched-num">1.</span>商品企画</div>
                 <div class="sched-dur">
                   <select class="sched-val-sel"></select>
-                  <select class="sched-unit"><option>日</option><option>週</option><option>月</option></select>
+                  <select class="sched-unit"><option>日</option><option>週間</option><option>ヵ月</option></select>
                 </div>
               </div>
               <div class="sched-step sched-step-fixed">
@@ -267,7 +267,7 @@
                 <div class="sched-label"><span class="sched-num">3.</span>試作サンプル作成</div>
                 <div class="sched-dur">
                   <select class="sched-val-sel"></select>
-                  <select class="sched-unit"><option>日</option><option>週</option><option>月</option></select>
+                  <select class="sched-unit"><option>日</option><option>週間</option><option>ヵ月</option></select>
                 </div>
               </div>
               <div class="sched-step sched-step-fixed">
@@ -280,7 +280,7 @@
                 <div class="sched-label"><span class="sched-num">5.</span>量産</div>
                 <div class="sched-dur">
                   <select class="sched-val-sel"></select>
-                  <select class="sched-unit"><option>日</option><option>週</option><option>月</option></select>
+                  <select class="sched-unit"><option>日</option><option>週間</option><option>ヵ月</option></select>
                 </div>
               </div>
               <div class="sched-step sched-step-fixed">
@@ -293,10 +293,13 @@
                 <div class="sched-label"><span class="sched-num">7.</span>発売</div>
                 <div class="sched-dur">
                   <select class="sched-val-sel"></select>
-                  <select class="sched-unit"><option>日</option><option>週</option><option>月</option></select>
+                  <select class="sched-unit"><option>日</option><option>週間</option><option>ヵ月</option></select>
                 </div>
               </div>
             </div>
+          </div>
+          <div class="sched-result-row">
+            <span class="sched-result" id="sched-result"></span>
           </div>
         </div>
 
@@ -725,6 +728,30 @@
       sel.innerHTML = '<option value="">－</option>' +
         Array.from({length: 31}, (_, i) => `<option>${i + 1}</option>`).join('');
     });
+
+    // スケジュール合計計算
+    const unitDays = {'日': 1, '週間': 7, 'ヵ月': 30};
+    const FIXED_DAYS = 14 + 14 + 5; // 2.デザイン監修 + 4.試作サンプル監修 + 6.最終サンプルの提出
+
+    function calcSchedule() {
+      let total = FIXED_DAYS;
+      document.querySelectorAll('.sched-step:not(.sched-step-fixed)').forEach(step => {
+        const val = parseInt(step.querySelector('.sched-val-sel').value) || 0;
+        const unit = step.querySelector('.sched-unit').value;
+        total += val * (unitDays[unit] || 1);
+      });
+      const result = document.getElementById('sched-result');
+      const months = total / 30;
+      const display = Number.isInteger(Math.round(months * 10) / 10)
+        ? Math.round(months).toString()
+        : (Math.round(months * 10) / 10).toFixed(1);
+      result.textContent = `約${display}ヵ月後〜`;
+    }
+
+    document.querySelectorAll('.sched-val-sel, .sched-unit').forEach(el => {
+      el.addEventListener('change', calcSchedule);
+    });
+    calcSchedule();
 
     // サイドバーアコーディオン
     document.querySelectorAll('.nav-toggle').forEach(btn => {
