@@ -660,11 +660,23 @@ p strong { color: var(--s-navy); }
 }
 
 .tl-step-accent {
-  background: var(--s-cyan-pale);
-  color: #00698A;
+  background: var(--s-red-light);
+  color: var(--s-red-dark);
   font-weight: 600;
 }
 
+/* ホバー */
+.tl-step:not(.active):hover {
+  background: var(--s-purple-pale);
+  color: var(--s-purple);
+}
+
+.tl-step.tl-step-accent:not(.active):hover {
+  background: #F9C9C0;
+  color: var(--s-red-dark);
+}
+
+/* アクティブ */
 .tl-step.active {
   background: var(--s-navy);
   color: var(--s-white);

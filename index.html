@@ -542,10 +542,18 @@
         s.classList.toggle('active', s.dataset.tab === tabId));
     }
     document.querySelectorAll('.tl-step[data-tab]').forEach(step => {
-      step.addEventListener('click', function() {
+      step.addEventListener('click', function(e) {
+        e.stopPropagation();
         switchFlowTab(this.dataset.tab);
         document.querySelector('.flow-tab-panels').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       });
+    });
+
+    // タイムライン外クリックで初期状態（flow-1）に戻す
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.timeline-scroll') && !e.target.closest('.flow-tab-panels')) {
+        switchFlowTab('flow-1');
+      }
     });
 
     // アクティブナビゲーション
