@@ -752,7 +752,7 @@
     const sections = document.querySelectorAll('section[id]');
     function updateActiveNav() {
       let current = '';
-      const threshold = 32;
+      const threshold = 120;
       sections.forEach(section => {
         if (section.getBoundingClientRect().top <= threshold) {
           current = section.getAttribute('id');
