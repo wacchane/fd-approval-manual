@@ -3,6 +3,8 @@
 
 :root {
   /* Pantone カラー */
+  --p-navy:        #2D3177;   /* 276 C — ディープネイビー（ヘッダー・フッター・ステップ番号） */
+  --p-navy-dark:   #1E2258;   /* 276 C 濃  */
   --p-base:        #3A3B3E;   /* 19-4013 TCX — Asphalt（メインダーク） */
   --p-base-dark:   #28292C;   /* Asphalt 濃  */
   --p-base-mid:    #55565A;   /* Asphalt 中  */
@@ -34,7 +36,7 @@ body {
 
 /* ===== ヘッダー ===== */
 .site-header {
-  background: var(--p-base);
+  background: var(--p-navy);
   color: var(--p-white);
   position: sticky;
   top: 0;
@@ -215,7 +217,7 @@ p { margin-bottom: 12px; color: var(--p-base); }
 }
 
 .step-num {
-  background: var(--p-blue);
+  background: var(--p-navy);
   color: var(--p-white);
   width: 28px;
   height: 28px;
@@ -372,7 +374,7 @@ p { margin-bottom: 12px; color: var(--p-base); }
 }
 
 .reg-step-num {
-  background: var(--p-base);
+  background: var(--p-navy);
   color: var(--p-white);
   width: 30px;
   height: 30px;
@@ -537,7 +539,7 @@ p { margin-bottom: 12px; color: var(--p-base); }
 
 /* ===== フッター ===== */
 .site-footer {
-  background: var(--p-base-dark);
+  background: var(--p-navy-dark);
   color: var(--p-stone);
   text-align: center;
   padding: 28px 24px;
