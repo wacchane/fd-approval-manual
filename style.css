@@ -654,6 +654,28 @@ p strong { color: var(--s-navy); }
 
 .tl-step:last-child { border-right: none; }
 
+.tl-step {
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+
+.tl-step-accent {
+  background: var(--s-cyan-pale);
+  color: #00698A;
+  font-weight: 600;
+}
+
+.tl-step.active {
+  background: var(--s-navy);
+  color: var(--s-white);
+  font-weight: 600;
+}
+
+.tl-step.tl-step-accent.active {
+  background: var(--s-purple);
+  color: var(--s-white);
+}
+
 /* ===== フロータブ ===== */
 .flow-tabs { margin-top: 24px; }
 

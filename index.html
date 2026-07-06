@@ -52,28 +52,18 @@
               <span class="tl-label">4か月</span>
             </div>
             <div class="timeline-steps">
-              <div class="tl-step">①商品企画</div>
-              <div class="tl-step">②デザイン監修</div>
-              <div class="tl-step">③試作サンプル作成</div>
-              <div class="tl-step">④試作サンプル監修</div>
-              <div class="tl-step">⑤量産</div>
-              <div class="tl-step">⑥最終サンプルの提出</div>
-              <div class="tl-step">⑦発売</div>
+              <div class="tl-step active" data-tab="flow-1">①商品企画</div>
+              <div class="tl-step tl-step-accent" data-tab="flow-2">②デザイン監修</div>
+              <div class="tl-step" data-tab="flow-3">③試作サンプル作成</div>
+              <div class="tl-step tl-step-accent" data-tab="flow-4">④試作サンプル監修</div>
+              <div class="tl-step" data-tab="flow-5">⑤量産</div>
+              <div class="tl-step tl-step-accent" data-tab="flow-6">⑥最終サンプルの提出</div>
+              <div class="tl-step" data-tab="flow-7">⑦発売</div>
             </div>
           </div>
         </div>
 
         <div class="flow-tabs">
-          <div class="flow-tab-buttons">
-            <button class="flow-tab-btn active" data-tab="flow-1"><span class="flow-tab-num">①</span>商品企画</button>
-            <button class="flow-tab-btn" data-tab="flow-2"><span class="flow-tab-num">②</span>デザイン監修</button>
-            <button class="flow-tab-btn" data-tab="flow-3"><span class="flow-tab-num">③</span>サンプル作成</button>
-            <button class="flow-tab-btn" data-tab="flow-4"><span class="flow-tab-num">④</span>サンプル監修</button>
-            <button class="flow-tab-btn" data-tab="flow-5"><span class="flow-tab-num">⑤</span>量産</button>
-            <button class="flow-tab-btn" data-tab="flow-6"><span class="flow-tab-num">⑥</span>最終提出</button>
-            <button class="flow-tab-btn" data-tab="flow-7"><span class="flow-tab-num">⑦</span>発売</button>
-          </div>
-
           <div class="flow-tab-panels">
 
             <div class="flow-tab-panel active" id="flow-1">
@@ -544,13 +534,17 @@
       });
     });
 
-    // フロータブ切り替え
-    document.querySelectorAll('.flow-tab-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.flow-tab-btn').forEach(b => b.classList.remove('active'));
-        document.querySelectorAll('.flow-tab-panel').forEach(p => p.classList.remove('active'));
-        this.classList.add('active');
-        document.getElementById(this.dataset.tab).classList.add('active');
+    // タイムライン連携タブ切り替え
+    function switchFlowTab(tabId) {
+      document.querySelectorAll('.flow-tab-panel').forEach(p => p.classList.remove('active'));
+      document.getElementById(tabId).classList.add('active');
+      document.querySelectorAll('.tl-step[data-tab]').forEach(s =>
+        s.classList.toggle('active', s.dataset.tab === tabId));
+    }
+    document.querySelectorAll('.tl-step[data-tab]').forEach(step => {
+      step.addEventListener('click', function() {
+        switchFlowTab(this.dataset.tab);
+        document.querySelector('.flow-tab-panels').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       });
     });
 
