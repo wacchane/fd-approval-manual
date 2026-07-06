@@ -710,15 +710,6 @@
       showPanel(stickyTab);
     });
 
-    // タイムライン・パネル以外クリックで初期化
-    document.addEventListener('click', function(e) {
-      if (!e.target.closest('.timeline-scroll') && !e.target.closest('.flow-tab-panels')) {
-        stickyTab = 'flow-1';
-        setActiveStep('flow-1');
-        showPanel('flow-1');
-      }
-    });
-
     // 初期表示：1.商品企画
     setActiveStep('flow-1');
     showPanel('flow-1');
