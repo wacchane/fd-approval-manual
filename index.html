@@ -19,17 +19,101 @@
 
     <nav class="sidebar">
       <p class="nav-label">目次</p>
-      <ul>
-        <li><a href="#flow">1. 商品化の流れ</a></li>
-        <li><a href="#channel">2. 商流について</a></li>
-        <li><a href="#factory">3. 生産工場について</a></li>
-        <li><a href="#registration">4. 工場登録方法</a></li>
-        <li><a href="#countries">5. 調達許可国リスト</a></li>
-        <li><a href="#validity">6. 工場登録の有効期限・抜き打ち監査</a></li>
-        <li><a href="#materials">7. 専用資材について</a></li>
-        <li><a href="#promotion">8. 商品販促上の主なルール</a></li>
-        <li><a href="#publication">9. 掲載物のルール</a></li>
-        <li><a href="#design">10. デザイン上の注意点</a></li>
+      <ul class="nav-list">
+
+        <li class="nav-item has-sub">
+          <div class="nav-row">
+            <button class="nav-toggle" aria-expanded="false">›</button>
+            <a href="#flow" class="nav-link">1. 商品化の流れ</a>
+          </div>
+          <ul class="nav-sub">
+            <li><a href="#h-timeline">商品化タイムスケジュール</a></li>
+            <li><a href="#h-planning">仮スケジュールを組む</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <div class="nav-row">
+            <a href="#channel" class="nav-link nav-link-plain">2. 商流について</a>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <div class="nav-row">
+            <a href="#factory" class="nav-link nav-link-plain">3. 生産工場について</a>
+          </div>
+        </li>
+
+        <li class="nav-item has-sub">
+          <div class="nav-row">
+            <button class="nav-toggle" aria-expanded="false">›</button>
+            <a href="#registration" class="nav-link">4. 工場登録方法</a>
+          </div>
+          <ul class="nav-sub">
+            <li><a href="#h-reg-about">製造工場の登録について</a></li>
+            <li><a href="#h-reg-method">製造工場の登録方法</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-sub">
+          <div class="nav-row">
+            <button class="nav-toggle" aria-expanded="false">›</button>
+            <a href="#countries" class="nav-link">5. 調達許可国リスト</a>
+          </div>
+          <ul class="nav-sub">
+            <li><a href="#h-prohibited">調達禁止国の一例</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-sub">
+          <div class="nav-row">
+            <button class="nav-toggle" aria-expanded="false">›</button>
+            <a href="#validity" class="nav-link">6. 工場登録の有効期限・抜き打ち監査</a>
+          </div>
+          <ul class="nav-sub">
+            <li><a href="#h-validity-detail">製造工場認定証の有効期限</a></li>
+            <li><a href="#h-audit">Disneyによる抜き打ち監査</a></li>
+            <li><a href="#h-change">工場に変更が起きた場合</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item has-sub">
+          <div class="nav-row">
+            <button class="nav-toggle" aria-expanded="false">›</button>
+            <a href="#materials" class="nav-link">7. 専用資材について</a>
+          </div>
+          <ul class="nav-sub">
+            <li><a href="#h-branding">ブランディング資材の例</a></li>
+            <li><a href="#h-config">資材の構成</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <div class="nav-row">
+            <a href="#promotion" class="nav-link nav-link-plain">8. 商品販促上の主なルール</a>
+          </div>
+        </li>
+
+        <li class="nav-item has-sub">
+          <div class="nav-row">
+            <button class="nav-toggle" aria-expanded="false">›</button>
+            <a href="#publication" class="nav-link">9. 掲載物のルール</a>
+          </div>
+          <ul class="nav-sub">
+            <li><a href="#h-ngword">NGワード</a></li>
+            <li><a href="#h-productname">商品名について</a></li>
+            <li><a href="#h-image">掲載画像について</a></li>
+            <li><a href="#h-product">商品紹介について</a></li>
+            <li><a href="#h-press">プレスリリース</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <div class="nav-row">
+            <a href="#design" class="nav-link nav-link-plain">10. デザイン上の注意点</a>
+          </div>
+        </li>
+
       </ul>
     </nav>
 
@@ -39,7 +123,7 @@
       <section id="flow">
         <h2>1. 商品化の流れ</h2>
 
-        <h3>商品化タイムスケジュール</h3>
+        <h3 id="h-timeline">商品化タイムスケジュール</h3>
 
         <div class="timeline-scroll">
           <div class="timeline-inner">
@@ -161,7 +245,7 @@
           </div><!-- /.flow-tab-panels -->
         </div><!-- /.flow-tabs -->
 
-        <h3>仮スケジュールを組む</h3>
+        <h3 id="h-planning">仮スケジュールを組む</h3>
         <div class="section-notes" id="notes-flow-schedule"></div>
 
         <div class="section-notes" id="notes-flow"></div>
@@ -228,7 +312,7 @@
       <!-- セクション4 -->
       <section id="registration">
         <h2>4. 工場登録方法</h2>
-        <h3>製造工場の登録について</h3>
+        <h3 id="h-reg-about">製造工場の登録について</h3>
         <p>商品化いただくにあたり、コンテンツに触れる行程はすべて製造工場の情報を版権元に提出する必要がございます。</p>
 
         <div class="two-col">
@@ -255,7 +339,7 @@
           </div>
         </div>
 
-        <h3>製造工場の登録方法</h3>
+        <h3 id="h-reg-method">製造工場の登録方法</h3>
         <p>商品を生産するすべての工場は、版権元が定めたILS基準を満たし、安全で質の高い商品を開発いただく必要がございます。使用する工場を漏れなく申請する必要があり、申請は大きく以下3種類の方法に分かれます。</p>
 
         <div class="registration-steps">
@@ -311,7 +395,7 @@
           </div>
         </div>
 
-        <h3>調達禁止国の一例</h3>
+        <h3 id="h-prohibited">調達禁止国の一例</h3>
         <p>調達が禁止されている国の一例を記載しております。以下に限らず、リストに記載のない国での調達・製造は不可となります。</p>
         <ul class="prohibited-list">
           <li>アフガニスタン</li>
@@ -332,7 +416,7 @@
       <section id="validity">
         <h2>6. 工場登録の有効期限 / 抜き打ち監査について</h2>
 
-        <h3>製造工場認定証の有効期限について</h3>
+        <h3 id="h-validity-detail">製造工場認定証の有効期限について</h3>
         <p>版権元から返送されます署名入りFAMAは<strong>承認日から3年間有効</strong>となります。（FAMA右下に期日記載ございます）</p>
 
         <div class="two-col">
@@ -352,7 +436,7 @@
 
         <div class="note">「ILS監査が必要な調達許可国」の工場を継続して使用いただく場合には、監査レポートから1年経過する前に第三者機関による再監査を受け、レポートをご提出ください。</div>
 
-        <h3>Disneyによる抜き打ち監査について</h3>
+        <h3 id="h-audit">Disneyによる抜き打ち監査について</h3>
         <p>承認を得た工場であっても、版権元による抜き打ち監査が行われます。</p>
         <p>監査実施前にライセンシー（弊社）に通達が入り、通達から<strong>90日間のどこかで監査が入る</strong>というものです。版権元が定めるILS基準の違反がないかを確かめるためのものであり、問題がなければ監査代を請求されることはなくそのまま継続使用が可能になります。</p>
 
@@ -360,7 +444,7 @@
           抜き打ち監査で最低基準違反が見つかった場合、抜き打ち監査代は弊社から御社へご請求となりますので、ご注意ください。御社にて追跡監査を受けていただき是正措置が認められるまで工場を使用することはできません。
         </div>
 
-        <h3>工場に何かしらの変更が起きた場合</h3>
+        <h3 id="h-change">工場に何かしらの変更が起きた場合</h3>
         <p>工場名称の変更や住所変更が起きた場合、<strong>速やかにご連絡をお願いいたします。</strong></p>
         <div class="section-notes" id="notes-validity"></div>
       </section>
@@ -371,7 +455,7 @@
 
         <p>どのコンテンツで商品化をいただく場合でも、コンテンツ毎の<strong>専用資材（ブランディング資材）</strong>を本体に付けていただく必要がございます。商品を見たときに、正しくアプルーブが取れた商品か、どのライセンシーを通じて商品化されたものかを分かるようにするためです。</p>
 
-        <h3>主なブランディング資材の例</h3>
+        <h3 id="h-branding">主なブランディング資材の例</h3>
 
         <div class="materials-grid">
           <div class="material-card">
@@ -402,7 +486,7 @@
           </div>
         </div>
 
-        <h3>ブランディング資材の構成</h3>
+        <h3 id="h-config">ブランディング資材の構成</h3>
         <div class="materials-numbering">
           <div class="mat-item"><span>1.</span>ブランディング下げ札</div>
           <div class="mat-item"><span>2.</span>コピーライトネーム</div>
@@ -427,7 +511,7 @@
       <section id="publication">
         <h2>9. 掲載物のルールについて</h2>
 
-        <h3>NGワード</h3>
+        <h3 id="h-ngword">NGワード</h3>
         <p>以下の表現はNGとなります。</p>
         <div class="ng-words">
           <span class="ng-tag">「コラボ」</span>
@@ -442,7 +526,7 @@
           <p>ブランド名 / THE BATMAN COLLECTION</p>
         </div>
 
-        <h3>商品名について</h3>
+        <h3 id="h-productname">商品名について</h3>
         <p>「ディズニー」や「ミッキー」といった言葉とアイテム名、ブランド名は [ ] や / 等で区切りを入れてください。</p>
         <div class="example-block">
           <p class="ok-label">OK例</p>
@@ -450,7 +534,7 @@
           <p>[ブランド名] THE BATMAN / LOGO SWEAT</p>
         </div>
 
-        <h3>掲載画像について</h3>
+        <h3 id="h-image">掲載画像について</h3>
         <p>掲載画像には必ずコピーライトを入れてください。正しいコピーライトは各担当までお問い合わせください。</p>
 
         <h4>掲載画像のNG事項</h4>
@@ -460,7 +544,7 @@
           <li>タトゥーがあるモデルの着用</li>
         </ul>
 
-        <h3>商品紹介について</h3>
+        <h3 id="h-product">商品紹介について</h3>
         <p>上記NGワードは避けていただき作成をお願いいたします。キャラクターや映画に大きく触れる表現は避けてください。</p>
         <div class="ng-example">
           <p class="ng-label">NG例</p>
@@ -475,7 +559,7 @@
           <p>監修期間はご提出から<strong>約10営業日</strong>となります。</p>
         </div>
 
-        <h3>プレスリリースの文章について</h3>
+        <h3 id="h-press">プレスリリースの文章について</h3>
         <p>プレスリリースを出す場合、リリース末尾に必ず以下文言を入れてください。</p>
         <div class="press-template">
           <p><strong>【ライセンスに関する問い合わせ】</strong></p>
@@ -579,9 +663,19 @@
       }
     });
 
+    // サイドバーアコーディオン
+    document.querySelectorAll('.nav-toggle').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        const sub = this.closest('.nav-item').querySelector('.nav-sub');
+        const isOpen = sub.classList.toggle('open');
+        this.classList.toggle('open', isOpen);
+        this.setAttribute('aria-expanded', isOpen);
+      });
+    });
+
     // アクティブナビゲーション
     const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.sidebar a');
     window.addEventListener('scroll', () => {
       let current = '';
       sections.forEach(section => {
@@ -589,11 +683,11 @@
           current = section.getAttribute('id');
         }
       });
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === '#' + current) {
-          link.classList.add('active');
-        }
+      document.querySelectorAll('.nav-row').forEach(row => {
+        const link = row.querySelector('.nav-link');
+        if (!link) return;
+        const isActive = link.getAttribute('href') === '#' + current;
+        row.classList.toggle('active', isActive);
       });
     });
   </script>

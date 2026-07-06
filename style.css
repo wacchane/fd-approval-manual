@@ -111,31 +111,86 @@ body {
   opacity: .7;
 }
 
-.sidebar ul { list-style: none; }
+.nav-list, .nav-sub { list-style: none; }
 
-.sidebar ul li a {
+.nav-row {
+  display: flex;
+  align-items: center;
+  border-left: 2px solid transparent;
+  transition: background .2s, border-color .2s;
+}
+
+.nav-row:hover {
+  background: rgba(99,91,255,.06);
+  border-left-color: rgba(99,91,255,.2);
+}
+
+.nav-row.active {
+  background: var(--s-purple-pale);
+  border-left-color: var(--s-purple);
+}
+
+.nav-toggle {
+  width: 30px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--s-navy-light);
+  font-size: 15px;
+  cursor: pointer;
+  flex-shrink: 0;
+  padding: 0 0 0 12px;
+  transition: transform .22s, color .2s;
+  line-height: 1;
+}
+
+.nav-toggle.open {
+  transform: rotate(90deg);
+  color: var(--s-purple);
+}
+
+.nav-link {
+  flex: 1;
   display: block;
-  padding: 9px 20px;
+  padding: 9px 16px 9px 4px;
   color: var(--s-navy-light);
   text-decoration: none;
   font-size: 13px;
-  border-left: 2px solid transparent;
-  transition: color .2s, border-color .2s, background .2s;
+  transition: color .2s;
   line-height: 1.5;
 }
 
-.sidebar ul li a:hover {
-  color: var(--s-navy);
-  background: rgba(99,91,255,.06);
-  border-left-color: var(--border);
-}
+.nav-link-plain { padding-left: 30px; }
 
-.sidebar ul li a.active {
+.nav-row.active .nav-link {
   color: var(--s-purple);
-  background: var(--s-purple-pale);
-  border-left-color: var(--s-purple);
   font-weight: 600;
 }
+
+.nav-sub {
+  display: none;
+  padding: 2px 0 6px 42px;
+  border-left: 2px solid var(--border);
+  margin-left: 14px;
+}
+
+.nav-sub.open { display: block; }
+
+.nav-sub li a {
+  display: block;
+  padding: 5px 12px 5px 0;
+  font-size: 12px;
+  color: var(--s-navy-light);
+  text-decoration: none;
+  transition: color .2s;
+  line-height: 1.5;
+  border: none;
+}
+
+.nav-sub li a:hover { color: var(--s-purple); }
 
 /* ===== メインコンテンツ ===== */
 .content {
