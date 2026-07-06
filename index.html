@@ -679,7 +679,7 @@
     });
 
     // タイムライン表示制御
-    let stickyTab = null;
+    let stickyTab = 'flow-1';
 
     function showPanel(tabId) {
       document.querySelectorAll('.flow-tab-panel').forEach(p => p.classList.remove('active'));
@@ -718,6 +718,10 @@
         showPanel(null);
       }
     });
+
+    // 初期表示：1.商品企画
+    setActiveStep('flow-1');
+    showPanel('flow-1');
 
     // スケジュールプランナー：1〜31のプルダウン生成
     document.querySelectorAll('.sched-val-sel').forEach(sel => {
