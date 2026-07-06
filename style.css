@@ -632,21 +632,27 @@ p strong { color: var(--s-navy); }
 
 .timeline-steps {
   display: flex;
-  gap: 8px;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .tl-step {
   flex: 1;
   background: var(--bg-2);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 7px 10px;
+  border: none;
+  border-right: 1px solid var(--border);
+  border-radius: 0;
+  padding: 8px 10px;
   font-size: 12px;
   font-weight: 500;
   color: var(--s-navy);
   white-space: nowrap;
   text-align: center;
 }
+
+.tl-step:last-child { border-right: none; }
 
 /* ===== フロータブ ===== */
 .flow-tabs { margin-top: 24px; }
