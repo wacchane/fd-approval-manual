@@ -732,6 +732,102 @@ p strong { color: var(--s-navy); }
   color: var(--s-white);
 }
 
+/* ===== 仮スケジュールプランナー ===== */
+.sched-scroll {
+  overflow-x: auto;
+  margin: 20px 0;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.sched-scroll::-webkit-scrollbar { height: 4px; }
+.sched-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.sched-inner { min-width: 700px; }
+
+.sched-steps {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sched-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+}
+.sched-step:last-child { border-right: none; }
+
+.sched-label {
+  padding: 7px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--s-navy);
+  text-align: center;
+  background: var(--bg-2);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.sched-num {
+  font-weight: 700;
+  color: var(--s-purple);
+}
+
+.sched-dur {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 8px 4px;
+  background: var(--s-offwhite);
+}
+
+.sched-val {
+  width: 40px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 4px 4px;
+  font-size: 13px;
+  text-align: center;
+  color: var(--s-navy);
+  background: var(--s-white);
+  outline: none;
+  font-family: inherit;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.sched-val::-webkit-inner-spin-button,
+.sched-val::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.sched-val:focus {
+  border-color: var(--s-purple);
+  box-shadow: 0 0 0 2px rgba(99,91,255,.15);
+}
+
+.sched-unit {
+  width: 34px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 4px 2px;
+  font-size: 12px;
+  color: var(--s-navy);
+  background: var(--s-white);
+  cursor: pointer;
+  font-family: inherit;
+  outline: none;
+  text-align: center;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.sched-unit:focus { border-color: var(--s-purple); }
+
 /* ===== フロータブ ===== */
 .flow-tabs { margin-top: 24px; }
 
