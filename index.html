@@ -253,7 +253,7 @@
               <div class="sched-step">
                 <div class="sched-label"><span class="sched-num">1.</span>商品企画</div>
                 <div class="sched-dur">
-                  <input type="number" min="1" class="sched-val" placeholder="－">
+                  <select class="sched-val-sel"></select>
                   <select class="sched-unit"><option>日</option><option>週</option><option>月</option></select>
                 </div>
               </div>
@@ -266,7 +266,7 @@
               <div class="sched-step">
                 <div class="sched-label"><span class="sched-num">3.</span>試作サンプル作成</div>
                 <div class="sched-dur">
-                  <input type="number" min="1" class="sched-val" placeholder="－">
+                  <select class="sched-val-sel"></select>
                   <select class="sched-unit"><option>日</option><option>週</option><option>月</option></select>
                 </div>
               </div>
@@ -279,7 +279,7 @@
               <div class="sched-step">
                 <div class="sched-label"><span class="sched-num">5.</span>量産</div>
                 <div class="sched-dur">
-                  <input type="number" min="1" class="sched-val" placeholder="－">
+                  <select class="sched-val-sel"></select>
                   <select class="sched-unit"><option>日</option><option>週</option><option>月</option></select>
                 </div>
               </div>
@@ -292,7 +292,7 @@
               <div class="sched-step">
                 <div class="sched-label"><span class="sched-num">7.</span>発売</div>
                 <div class="sched-dur">
-                  <input type="number" min="1" class="sched-val" placeholder="－">
+                  <select class="sched-val-sel"></select>
                   <select class="sched-unit"><option>日</option><option>週</option><option>月</option></select>
                 </div>
               </div>
@@ -718,6 +718,12 @@
         setActiveStep(null);
         showPanel(null);
       }
+    });
+
+    // スケジュールプランナー：1〜31のプルダウン生成
+    document.querySelectorAll('.sched-val-sel').forEach(sel => {
+      sel.innerHTML = '<option value="">－</option>' +
+        Array.from({length: 31}, (_, i) => `<option>${i + 1}</option>`).join('');
     });
 
     // サイドバーアコーディオン

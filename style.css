@@ -790,23 +790,22 @@ p strong { color: var(--s-navy); }
   background: var(--s-offwhite);
 }
 
-.sched-val {
-  width: 40px;
+.sched-val-sel {
+  width: 46px;
   border: 1px solid var(--border);
   border-radius: 5px;
-  padding: 4px 4px;
+  padding: 4px 2px;
   font-size: 13px;
   text-align: center;
   color: var(--s-navy);
   background: var(--s-white);
   outline: none;
   font-family: inherit;
-  -moz-appearance: textfield;
-  appearance: textfield;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
 }
-.sched-val::-webkit-inner-spin-button,
-.sched-val::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-.sched-val:focus {
+.sched-val-sel:focus {
   border-color: var(--s-purple);
   box-shadow: 0 0 0 2px rgba(99,91,255,.15);
 }
