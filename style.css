@@ -828,6 +828,14 @@ p strong { color: var(--s-navy); }
 }
 .sched-unit:focus { border-color: var(--s-purple); }
 
+.sched-step-fixed .sched-dur { background: var(--bg-3); }
+
+.sched-fixed-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--s-navy-mid);
+}
+
 /* ===== フロータブ ===== */
 .flow-tabs { margin-top: 24px; }
 
