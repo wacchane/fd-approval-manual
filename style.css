@@ -657,17 +657,6 @@ p strong { color: var(--s-navy); }
 .tl-step {
   cursor: pointer;
   transition: background .15s, color .15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3px;
-}
-
-.tl-num {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1;
-  flex-shrink: 0;
 }
 
 /* ホバー */
