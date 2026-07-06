@@ -14,6 +14,7 @@
   --p-flame:       #EF5229;   /* 18-1663 TCX */
   --p-flame-light: #FDEEE9;
   --p-flame-dark:  #C8391A;
+  --p-violet:      #5046A8;   /* 19-3952 TCX — タブ選択色 */
 
   /* 背景レイヤー（ライトモード） */
   --bg-0:   #F0EFEC;   /* サイドバー */
@@ -611,9 +612,9 @@ p strong { color: var(--p-base); }
 }
 
 .flow-tab-btn.active {
-  background: var(--p-base);
+  background: var(--p-violet);
   color: #FFFFFF;
-  border-color: var(--p-base);
+  border-color: var(--p-violet);
 }
 
 .flow-tab-num { font-size: 11px; opacity: .7; }
