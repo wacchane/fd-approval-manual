@@ -578,6 +578,76 @@ p strong { color: var(--s-navy); }
   line-height: 2.4;
 }
 
+/* ===== ビジュアルタイムライン ===== */
+.timeline-scroll {
+  overflow-x: auto;
+  padding-bottom: 8px;
+  margin: 20px 0 28px;
+  /* スクロールバーを細く */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.timeline-scroll::-webkit-scrollbar { height: 4px; }
+.timeline-scroll::-webkit-scrollbar-track { background: transparent; }
+.timeline-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.timeline-inner { min-width: 680px; }
+
+.tl-arrow-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.tl-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--s-navy-light);
+  white-space: nowrap;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.tl-arrow-line {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.tl-arrow-shaft {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(90deg, var(--s-purple) 0%, var(--s-cyan) 100%);
+}
+
+.tl-arrow-head {
+  width: 0;
+  height: 0;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 8px solid var(--s-cyan);
+  flex-shrink: 0;
+}
+
+.timeline-steps {
+  display: flex;
+  gap: 8px;
+}
+
+.tl-step {
+  flex: 1;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--s-navy);
+  white-space: nowrap;
+  text-align: center;
+}
+
 /* ===== フロータブ ===== */
 .flow-tabs { margin-top: 24px; }
 
