@@ -659,10 +659,6 @@ p strong { color: var(--s-navy); }
   transition: background .15s, color .15s;
 }
 
-.tl-step-accent {
-  box-shadow: inset 0 3px 0 #3B82F6, inset 0 -3px 0 #3B82F6;
-}
-
 /* ホバー */
 .tl-step:not(.active):hover {
   background: var(--s-purple-pale);
@@ -677,7 +673,7 @@ p strong { color: var(--s-navy); }
 }
 
 .tl-step.tl-step-accent.active {
-  background: var(--s-purple);
+  background: var(--s-navy);
   color: var(--s-white);
 }
 
