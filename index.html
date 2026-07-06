@@ -750,20 +750,22 @@
 
     // アクティブナビゲーション
     const sections = document.querySelectorAll('section[id]');
-    window.addEventListener('scroll', () => {
+    function updateActiveNav() {
       let current = '';
+      const threshold = 64 + 60;
       sections.forEach(section => {
-        if (window.scrollY >= section.offsetTop - 120) {
+        if (section.getBoundingClientRect().top <= threshold) {
           current = section.getAttribute('id');
         }
       });
       document.querySelectorAll('.nav-row').forEach(row => {
         const link = row.querySelector('.nav-link');
         if (!link) return;
-        const isActive = link.getAttribute('href') === '#' + current;
-        row.classList.toggle('active', isActive);
+        row.classList.toggle('active', link.getAttribute('href') === '#' + current);
       });
-    });
+    }
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
   </script>
 
 </body>
