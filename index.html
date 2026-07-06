@@ -153,6 +153,7 @@
             <p>最終サンプルが承認されましたら、発売可能となります。</p>
           </div>
         </div>
+        <div class="section-notes" id="notes-flow"></div>
       </section>
 
       <!-- セクション2 -->
@@ -204,12 +205,13 @@
             </div>
           </div>
         </div>
+        <div class="section-notes" id="notes-channel"></div>
       </section>
 
       <!-- セクション3 -->
       <section id="factory">
         <h2>3. 生産工場について</h2>
-        <p>生産工場に関する詳細は担当者までお問い合わせください。</p>
+        <div class="section-notes" id="notes-factory"></div>
       </section>
 
       <!-- セクション4 -->
@@ -279,6 +281,7 @@
         <div class="note">
           調達許可国リストに記載のない国での製造はできません。原産国が日本であっても、リスト外の国で原料を調達することも不可となります。
         </div>
+        <div class="section-notes" id="notes-registration"></div>
       </section>
 
       <!-- セクション5 -->
@@ -311,6 +314,7 @@
           <li>パキスタン</li>
           <li>ベネズエラ</li>
         </ul>
+        <div class="section-notes" id="notes-countries"></div>
       </section>
 
       <!-- セクション6 -->
@@ -347,6 +351,7 @@
 
         <h3>工場に何かしらの変更が起きた場合</h3>
         <p>工場名称の変更や住所変更が起きた場合、<strong>速やかにご連絡をお願いいたします。</strong></p>
+        <div class="section-notes" id="notes-validity"></div>
       </section>
 
       <!-- セクション7 -->
@@ -398,12 +403,13 @@
           品質表示内への印字が難しい場合や品質表示等が付かない商品の場合、④ライセンシーネームを付けていただきます。品質表示内に「foundation」と追記可能でしたら、④は不要です。<br>
           ③と④はどちらか一方でOKです。コンテンツにより、デザイン・購入方法が異なります。
         </div>
+        <div class="section-notes" id="notes-materials"></div>
       </section>
 
       <!-- セクション8 -->
       <section id="promotion">
         <h2>8. 商品販促上の主なルール</h2>
-        <p>商品の販促に関する詳細ルールは担当者よりご案内いたします。</p>
+        <div class="section-notes" id="notes-promotion"></div>
       </section>
 
       <!-- セクション9 -->
@@ -466,12 +472,13 @@
           住所：東京都渋谷区南平台町17-6 4階</p>
           <p>本商品は、〇〇〇（版権元の名前）との契約により、株式会社foundationが企画・製造し、株式会社●●●が販売するものです。</p>
         </div>
+        <div class="section-notes" id="notes-publication"></div>
       </section>
 
       <!-- セクション10 -->
       <section id="design">
         <h2>10. デザイン上の注意点</h2>
-        <p>デザインに関する詳細な注意点は担当者よりご案内いたします。</p>
+        <div class="section-notes" id="notes-design"></div>
       </section>
 
     </main>
@@ -479,8 +486,34 @@
 
   <footer class="site-footer">
     <p>株式会社foundation　〒150-0036 東京都渋谷区南平台町17-6 4階</p>
+    <p><span id="last-updated"></span></p>
     <p>&copy; foundation Inc. All rights reserved.</p>
   </footer>
+
+  <script>
+    // content.json を読み込んで各セクションに追記内容を表示
+    fetch('./content.json?t=' + Date.now())
+      .then(r => r.json())
+      .then(data => {
+        Object.keys(data.sections).forEach(key => {
+          const el = document.getElementById('notes-' + key);
+          if (!el) return;
+          const text = data.sections[key];
+          if (text && text.trim()) {
+            el.innerHTML = text.split('\n')
+              .filter(l => l.trim())
+              .map(l => `<p>${l}</p>`)
+              .join('');
+            el.style.display = 'block';
+          }
+        });
+        if (data.lastUpdated) {
+          const el = document.getElementById('last-updated');
+          if (el) el.textContent = '最終更新：' + data.lastUpdated;
+        }
+      })
+      .catch(() => {});
+  </script>
 
   <script>
     // スムーズスクロール

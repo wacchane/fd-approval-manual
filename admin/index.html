@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理者パネル — FOUNDATION マニュアル</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+      background: #f5f5f5;
+      color: #222;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ===== ログイン画面 ===== */
+    #login-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .login-box {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 48px 40px;
+      width: 360px;
+      box-shadow: 0 4px 20px rgba(0,0,0,.08);
+    }
+
+    .login-box h1 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .login-box p {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    .form-group { margin-bottom: 16px; }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: #444;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-size: 14px;
+      font-family: inherit;
+      transition: border-color .15s;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: #111;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 11px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s, opacity .15s;
+    }
+
+    .btn-primary { background: #111; color: #fff; width: 100%; }
+    .btn-primary:hover { background: #333; }
+    .btn-save { background: #111; color: #fff; padding: 12px 32px; font-size: 15px; }
+    .btn-save:hover { background: #333; }
+    .btn-save:disabled { opacity: .4; cursor: not-allowed; }
+    .btn-logout { background: transparent; color: #888; border: 1px solid #ddd; font-size: 13px; padding: 7px 14px; }
+    .btn-logout:hover { background: #f5f5f5; }
+
+    .error-msg {
+      background: #fff0f0;
+      color: #c0392b;
+      border: 1px solid #f5c6c6;
+      border-radius: 5px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-top: 12px;
+      display: none;
+    }
+
+    /* ===== 管理画面 ===== */
+    #admin-screen { display: none; }
+
+    .admin-header {
+      background: #111;
+      color: #fff;
+      padding: 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .admin-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 14px 24px;
+    }
+
+    .admin-header h1 { font-size: 16px; font-weight: 700; }
+    .admin-header p { font-size: 12px; color: #aaa; margin-top: 2px; }
+
+    .admin-body {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .setup-box {
+      background: #fffbf0;
+      border: 1px solid #e8d8a0;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      font-size: 13px;
+    }
+
+    .setup-box strong { display: block; margin-bottom: 8px; font-size: 14px; }
+    .setup-box code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+    .setup-box a { color: #1a6eb5; }
+
+    .pat-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+      align-items: flex-end;
+    }
+
+    .pat-row .form-group { flex: 1; margin-bottom: 0; }
+
+    .btn-pat { background: #555; color: #fff; padding: 10px 16px; font-size: 13px; white-space: nowrap; }
+    .btn-pat:hover { background: #333; }
+
+    .pat-status {
+      font-size: 12px;
+      margin-top: 8px;
+      color: #2ecc71;
+      display: none;
+    }
+
+    .section-editor {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    .section-editor-header {
+      background: #fafafa;
+      border-bottom: 1px solid #e0e0e0;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .section-editor-header h3 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .char-count { font-size: 12px; color: #aaa; }
+
+    .section-editor textarea {
+      width: 100%;
+      border: none;
+      padding: 16px 20px;
+      font-size: 14px;
+      font-family: inherit;
+      line-height: 1.8;
+      resize: vertical;
+      min-height: 100px;
+      background: #fff;
+    }
+
+    .section-editor textarea:focus { outline: none; background: #fffef8; }
+
+    .save-bar {
+      position: sticky;
+      bottom: 0;
+      background: #fff;
+      border-top: 1px solid #e0e0e0;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 -2px 12px rgba(0,0,0,.06);
+    }
+
+    .save-status {
+      font-size: 13px;
+      color: #2ecc71;
+      display: none;
+    }
+
+    .save-status.error { color: #c0392b; }
+
+    #last-updated-admin { font-size: 12px; color: #aaa; margin-left: auto; }
+  </style>
+</head>
+<body>
+
+<!-- ===== ログイン画面 ===== -->
+<div id="login-screen">
+  <div class="login-box">
+    <h1>管理者ログイン</h1>
+    <p>FOUNDATION 商品化マニュアル管理パネル</p>
+    <div class="form-group">
+      <label>パスワード</label>
+      <input type="password" id="pw-input" placeholder="パスワードを入力" autocomplete="current-password">
+    </div>
+    <button class="btn btn-primary" id="login-btn">ログイン</button>
+    <div class="error-msg" id="login-error">パスワードが正しくありません。</div>
+  </div>
+</div>
+
+<!-- ===== 管理画面 ===== -->
+<div id="admin-screen">
+  <header class="admin-header">
+    <div class="admin-header-inner">
+      <div>
+        <h1>管理者パネル</h1>
+        <p>FOUNDATION 商品化マニュアル</p>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <a href="../" style="color:#aaa; font-size:13px; text-decoration:none;">← サイトを見る</a>
+        <button class="btn btn-logout" id="logout-btn">ログアウト</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="admin-body">
+
+    <!-- GitHub PAT 設定 -->
+    <div class="setup-box" id="pat-setup">
+      <strong>⚙️ 初回設定：GitHub Personal Access Token（PAT）</strong>
+      <p>
+        保存にはGitHubのPATが必要です。<a href="https://github.com/settings/tokens/new?scopes=repo&description=FD-Manual-Admin" target="_blank">こちら</a>からトークンを作成してください。<br>
+        スコープは <code>repo</code> にチェックを入れて「Generate token」を押してください。
+      </p>
+      <div class="pat-row">
+        <div class="form-group">
+          <label>GitHub Personal Access Token</label>
+          <input type="password" id="pat-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+        </div>
+        <button class="btn btn-pat" id="save-pat-btn">保存</button>
+      </div>
+      <p class="pat-status" id="pat-status">✓ トークンを保存しました</p>
+    </div>
+
+    <p style="font-size:13px; color:#888; margin-bottom:24px;">
+      各セクションに表示するテキストを編集・追記できます。改行はそのまま反映されます。空白にするとその項目は非表示になります。
+    </p>
+
+    <!-- セクション編集エリア -->
+    <div id="editors-container"></div>
+
+    <!-- 保存バー -->
+    <div class="save-bar">
+      <button class="btn btn-save" id="save-btn">保存して公開</button>
+      <span class="save-status" id="save-status"></span>
+      <span id="last-updated-admin"></span>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // ============================================================
+  // 設定
+  // ============================================================
+  const REPO_OWNER = 'wacchane';
+  const REPO_NAME  = 'fd-approval-manual';
+  const CONTENT_FILE = 'content.json';
+
+  // パスワードハッシュ（SHA-256 of "foundation2024"）
+  // 変更するには: https://emn178.github.io/online-tools/sha256.html で新しいハッシュを生成し差し替えてください
+  const PASSWORD_HASH = 'ded18543d54b881491f7b2be35acc372b47421eceb0dbdae18eb4fbf38aed26c';
+
+  const SECTIONS = [
+    { key: 'flow',         label: '1. 商品化の流れ' },
+    { key: 'channel',      label: '2. 商流について' },
+    { key: 'factory',      label: '3. 生産工場について' },
+    { key: 'registration', label: '4. 工場登録方法' },
+    { key: 'countries',    label: '5. 調達許可国リスト' },
+    { key: 'validity',     label: '6. 工場登録の有効期限・抜き打ち監査' },
+    { key: 'materials',    label: '7. 専用資材について' },
+    { key: 'promotion',    label: '8. 商品販促上の主なルール' },
+    { key: 'publication',  label: '9. 掲載物のルール' },
+    { key: 'design',       label: '10. デザイン上の注意点' },
+  ];
+
+  // ============================================================
+  // ユーティリティ
+  // ============================================================
+  async function sha256(msg) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function getPAT()  { return localStorage.getItem('fd_admin_pat') || ''; }
+  function savePAT(t){ localStorage.setItem('fd_admin_pat', t); }
+
+  // ============================================================
+  // ログイン
+  // ============================================================
+  async function doLogin() {
+    const pw = document.getElementById('pw-input').value;
+    const hash = await sha256(pw);
+    if (hash === PASSWORD_HASH) {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('admin-screen').style.display  = 'block';
+      initAdmin();
+    } else {
+      document.getElementById('login-error').style.display = 'block';
+    }
+  }
+
+  document.getElementById('login-btn').addEventListener('click', doLogin);
+  document.getElementById('pw-input').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+  document.getElementById('logout-btn').addEventListener('click', () => {
+    document.getElementById('admin-screen').style.display = 'none';
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('pw-input').value = '';
+  });
+
+  // ============================================================
+  // PAT 設定
+  // ============================================================
+  function initPATArea() {
+    const pat = getPAT();
+    if (pat) {
+      document.getElementById('pat-input').value = '●'.repeat(20);
+      document.getElementById('pat-status').style.display = 'block';
+    }
+  }
+
+  document.getElementById('save-pat-btn').addEventListener('click', () => {
+    const val = document.getElementById('pat-input').value.trim();
+    if (val && !val.startsWith('●')) {
+      savePAT(val);
+      document.getElementById('pat-status').style.display = 'block';
+      document.getElementById('pat-input').value = '●'.repeat(20);
+    }
+  });
+
+  // ============================================================
+  // エディター構築
+  // ============================================================
+  let currentContent = {};
+
+  function buildEditors(data) {
+    currentContent = data;
+    const container = document.getElementById('editors-container');
+    container.innerHTML = '';
+
+    SECTIONS.forEach(({ key, label }) => {
+      const val = data.sections[key] || '';
+      const div = document.createElement('div');
+      div.className = 'section-editor';
+      div.innerHTML = `
+        <div class="section-editor-header">
+          <h3>${label}</h3>
+          <span class="char-count" id="count-${key}">${val.length} 文字</span>
+        </div>
+        <textarea id="editor-${key}" rows="4" placeholder="このセクションへの追記・メモを入力（空白にすると非表示）">${val}</textarea>
+      `;
+      container.appendChild(div);
+
+      const ta = div.querySelector('textarea');
+      ta.addEventListener('input', () => {
+        document.getElementById(`count-${key}`).textContent = ta.value.length + ' 文字';
+      });
+    });
+
+    if (data.lastUpdated) {
+      document.getElementById('last-updated-admin').textContent = '最終更新：' + data.lastUpdated;
+    }
+  }
+
+  // ============================================================
+  // content.json を GitHub API から取得
+  // ============================================================
+  async function fetchContent() {
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_FILE}`;
+    const pat = getPAT();
+    const headers = { 'Accept': 'application/vnd.github+json' };
+    if (pat) headers['Authorization'] = `token ${pat}`;
+
+    const res = await fetch(url, { headers });
+    if (!res.ok) throw new Error('content.json の取得に失敗しました: ' + res.status);
+    const json = await res.json();
+    const text = atob(json.content.replace(/\n/g, ''));
+    return { data: JSON.parse(text), sha: json.sha };
+  }
+
+  // ============================================================
+  // content.json を GitHub API で保存
+  // ============================================================
+  async function saveContent(data, sha) {
+    const pat = getPAT();
+    if (!pat || pat.startsWith('●')) throw new Error('GitHub PATが設定されていません。上の設定欄からPATを入力してください。');
+
+    const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_FILE}`;
+    const today = new Date().toISOString().split('T')[0];
+    data.lastUpdated = today;
+
+    const body = JSON.stringify({
+      message: `管理者パネルから更新 (${today})`,
+      content: btoa(unescape(encodeURIComponent(JSON.stringify(data, null, 2)))),
+      sha: sha,
+    });
+
+    const res = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${pat}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github+json',
+      },
+      body,
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      throw new Error(err.message || '保存に失敗しました: ' + res.status);
+    }
+    return today;
+  }
+
+  // ============================================================
+  // 保存ボタン
+  // ============================================================
+  let currentSHA = '';
+
+  document.getElementById('save-btn').addEventListener('click', async () => {
+    const btn = document.getElementById('save-btn');
+    const statusEl = document.getElementById('save-status');
+    btn.disabled = true;
+    btn.textContent = '保存中...';
+    statusEl.style.display = 'none';
+    statusEl.className = 'save-status';
+
+    try {
+      // 現在のSHAを再取得（並行編集対策）
+      const { sha } = await fetchContent();
+      currentSHA = sha;
+
+      // エディターの値を収集
+      SECTIONS.forEach(({ key }) => {
+        const ta = document.getElementById('editor-' + key);
+        if (ta) currentContent.sections[key] = ta.value;
+      });
+
+      const date = await saveContent(currentContent, currentSHA);
+      document.getElementById('last-updated-admin').textContent = '最終更新：' + date;
+      statusEl.textContent = '✓ 保存しました。約1分後にサイトに反映されます。';
+      statusEl.style.display = 'inline';
+
+      // SHA を更新
+      const refreshed = await fetchContent();
+      currentSHA = refreshed.sha;
+    } catch (e) {
+      statusEl.textContent = '⚠ ' + e.message;
+      statusEl.className = 'save-status error';
+      statusEl.style.display = 'inline';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = '保存して公開';
+    }
+  });
+
+  // ============================================================
+  // 管理画面初期化
+  // ============================================================
+  async function initAdmin() {
+    initPATArea();
+
+    try {
+      const { data, sha } = await fetchContent();
+      currentSHA = sha;
+      buildEditors(data);
+    } catch (e) {
+      // PATなしでも閲覧できるようにフォールバック
+      const defaultData = {
+        lastUpdated: '',
+        sections: Object.fromEntries(SECTIONS.map(s => [s.key, '']))
+      };
+      buildEditors(defaultData);
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -511,6 +511,18 @@ p { margin-bottom: 12px; }
 
 .press-template p { margin-bottom: 12px; }
 
+/* ===== 管理者追記エリア ===== */
+.section-notes {
+  display: none;
+  margin-top: 24px;
+  background: #fffef5;
+  border: 1px dashed #c8a96e;
+  border-radius: 6px;
+  padding: 16px 20px;
+}
+.section-notes p { margin-bottom: 8px; font-size: 14px; }
+.section-notes p:last-child { margin-bottom: 0; }
+
 /* ===== フッター ===== */
 .site-footer {
   background: var(--black);
